@@ -4,7 +4,7 @@ Here is how it will look! Keep connected!
 
 To run code:
 //clone the repo using 
-git clone https://github.com/alio-programmer/MERN-Chat-App.git
+git clone https://github.com/alio-programmer/ChatterEase.git
 To run backend:
 //open terminal for backend folder and use following commands
 npm install
