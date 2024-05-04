@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth.routes");
 const messageRoutes = require("./routes/message.routes");
@@ -7,6 +8,7 @@ const userRoutes = require("./routes/user.routes");
 const { connectToMongodb } = require("./db/connectToMongodb");
 
 const app = express();
+app.use(cors());
 app.use(express.json()); //to parse the incoming request with json payloads (from req.body)
 dotenv.config();
 app.use(cookieParser());

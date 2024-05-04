@@ -10,7 +10,6 @@ const signup = async (req, res) => {
     if (password !== confirmpassword) {
       return res.status(400).json({ error: "Passwords do not match" });
     }
-
     const user = await User.findOne({ username });
     if (user) {
       return res.status(400).json({ message: "Username already exists" });
@@ -19,7 +18,6 @@ const signup = async (req, res) => {
     //HASH password here
     const salt = await bcryptjs.genSalt(10);
     const hashedpassword = await bcryptjs.hash(password, salt);
-
     //https://avatar.iran.liara.run/public/boy
 
     const boyProfilepic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
