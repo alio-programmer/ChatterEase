@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useSignup from "../../Hooks/useSignup";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [input, setinput] = useState({
@@ -15,6 +16,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(input);
+    window.location.reload();
+    toast.success("signed up successfully");
   };
   return (
     <div className="flex flex-col items-center justify-center min-w-[500px] mx-auto">
@@ -111,8 +114,15 @@ const Signup = () => {
             Already have an account? Login
           </Link>
           <div>
-            <button className="btn btn-block btn-sm mt-2 hover:bg-blue-900">
-              Create Account
+            <button
+              className="btn btn-block btn-sm mt-2 hover:bg-blue-900"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>

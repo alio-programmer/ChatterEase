@@ -8,11 +8,11 @@ const signup = async (req, res) => {
       req.body;
 
     if (password !== confirmpassword) {
-      return res.status(400).json({ error: "Passwords do not match" });
+      return res.json({ error: "Passwords do not match" }).status(400);
     }
     const user = await User.findOne({ username });
     if (user) {
-      return res.status(400).json({ message: "Username already exists" });
+      return res.json({ error: "Username already exists" }).status(400);
     }
 
     //HASH password here
@@ -35,18 +35,20 @@ const signup = async (req, res) => {
       generatetoken(newuser._id, res);
       await newuser.save();
 
-      res.status(201).json({
-        _id: newuser._id,
-        fullName: newuser.fullname,
-        email: newuser.email,
-        userName: newuser.username,
-        profilepic: newuser.profilepic,
-      });
+      res
+        .json({
+          _id: newuser._id,
+          fullName: newuser.fullname,
+          email: newuser.email,
+          userName: newuser.username,
+          profilepic: newuser.profilepic,
+        })
+        .status(201);
     } else {
-      res.status(400).json({ error: "Invalid user data" });
+      res.json({ error: "Invalid user data" }).status(400);
     }
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error", error });
+    return res.json({ error: "Internal Server Error", error }).status(500);
   }
 };
 
@@ -59,8 +61,9 @@ const login = async (req, res) => {
       user?.password || ""
     );
     if (!user || !isPasswordtrue) {
-      return res.status(400).json({ message: "invalid username or password" });
+      return res.json({ error: "invalid username or password" }).status(401);
     }
+
     generatetoken(user._id, res);
 
     res.status(200).json({
@@ -71,16 +74,16 @@ const login = async (req, res) => {
       profilepic: user.profilepic,
     });
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error", error });
+    return res.json({ error: "Internal Server Error", error }).status(500);
   }
 };
 
 const logout = async (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
-    res.status(200).json({ message: "Logged out successfully" });
+    return res.json({ message: "Logged out successfully" }).status(200);
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error", error });
+    return res.json({ error: "Internal Server Error", error }).status(500);
   }
 };
 

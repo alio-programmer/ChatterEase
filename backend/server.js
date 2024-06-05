@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json()); //to parse the incoming request with json payloads (from req.body)
 dotenv.config();
 app.use(cookieParser());
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
