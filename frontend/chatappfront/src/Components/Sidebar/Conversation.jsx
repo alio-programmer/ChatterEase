@@ -1,10 +1,13 @@
 import React from "react";
 import profileimg from "../../assets/kisspng-computer-icons-user-profile-person-5abd85306ff7f7.0592226715223698404586.jpg";
 import useConversation from "../../zustand/useConversation";
+import { useSocketContext } from "../../Context/SocketContext";
 const Conversation = ({ conversation, emojis }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   const isselected = selectedConversation?._id === conversation._id;
+  const { onlineuser } = useSocketContext();
+  const isonline = onlineuser.includes(conversation._id);
   return (
     <>
       <div
@@ -15,9 +18,12 @@ const Conversation = ({ conversation, emojis }) => {
           setSelectedConversation(conversation);
         }}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isonline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
-            <img src={conversation.profilepic} alt="user avatar" />
+            <img
+              src={conversation.profilepic || `https://ui-avatars.com/api/`}
+              // alt="user avatar"
+            />
           </div>
         </div>
         <div className="flex flex-col flex-1">

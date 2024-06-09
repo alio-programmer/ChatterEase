@@ -9,7 +9,7 @@ const UseSendmessage = () => {
   const sendmessage = async (message) => {
     setloading(true);
     try {
-      const res = axios.post(
+      const res = await axios.post(
         `/api/messages/send/${selectedConversation._id}`,
         JSON.stringify({ message }),
         { headers: { "Content-Type": "application/json" } }
