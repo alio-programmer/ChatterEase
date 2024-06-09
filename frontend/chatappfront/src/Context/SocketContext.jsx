@@ -15,11 +15,17 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (AuthUser) {
-      const socket = io("http://localhost:8000", {
-        query: {
-          userId: AuthUser._id,
+      const socket = io(
+        "http://localhost:8000",
+        {
+          query: {
+            userId: AuthUser._id,
+          },
         },
-      });
+        {
+          transports: ["websocket"],
+        }
+      );
       setsocket(socket);
       socket.on("getOnlineUsers", (users) => {
         setonlineuser(users);
