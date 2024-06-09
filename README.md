@@ -1,8 +1,9 @@
-ChatterEase is Chat Application developed in MERN techstack to enable users hold conversation with other user on the platforn. Chatterease uses Socket.io for cross server communications. ChatterEase is still under development. If you want to contribute please mail me on gauravsinghbisht3@gmail.com.
-Here is how it will look! Keep connected!
+checkout the website here: https://chatterease.onrender.com
+ChatterEase is Chat Application developed in MERN techstack to enable users hold conversation with other user on the platforn. Chatterease uses Socket.io for real time communications. If you want to contribute please mail me on gauravsinghbisht3@gmail.com.
+Here is how it looks! Keep connected!
 ![Screenshot 2024-03-07 022009](https://github.com/alio-programmer/MERN-Chat-App/assets/92017948/a997438a-c476-4d21-a952-0b91feef17b2)
 
-To run code:
+To run code locally:
 //clone the repo using 
 git clone https://github.com/alio-programmer/ChatterEase.git
 To run backend:
