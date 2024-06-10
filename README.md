@@ -1,4 +1,4 @@
-checkout the website here: https://chatterease.onrender.com (the website might take time to load as it is deployed on free instance hence it need some time to open)
+<h1>checkout the website here: https://chatterease.onrender.com</h1> (the website might take time to load as it is deployed on free instance hence it need some time to open)
 ChatterEase is Chat Application developed in MERN techstack to enable users hold conversation with other user on the platforn. Chatterease uses Socket.io for real time communications. If you want to contribute please mail me on gauravsinghbisht3@gmail.com.
 Here is how it looks! Keep connected!
 ![Screenshot 2024-03-07 022009](https://github.com/alio-programmer/MERN-Chat-App/assets/92017948/a997438a-c476-4d21-a952-0b91feef17b2)
